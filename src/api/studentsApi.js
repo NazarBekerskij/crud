@@ -10,7 +10,6 @@ export const getStudents = () => {
 
 
 
-
 export const addStudent = (studentData) => {
     const options = {
         method: "POST",

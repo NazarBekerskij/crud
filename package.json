@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/NazarBekerskij/crud/issues"
   },
-  "homepage": "https://github.com/NazarBekerskij/crud",
+  "homepage": "https://NazarBekerskij.github.io/crud/",
   "devDependencies": {
     "console-browserify": "^1.2.0",
     "gh-pages": "^6.3.0"
