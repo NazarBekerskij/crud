@@ -1,3 +1,4 @@
+import { isElement } from "lodash";
 import { getStudents, addStudent, updateStudent, deleteStudent } from "./api/studentsApi";
 
 const listRef = document.querySelector("students-table tbody");
@@ -6,7 +7,7 @@ const form = document.querySelector("add-student-form");
 
 
 function createItemsMurckups(array){
-    const rows = array.map(({id, name, age, course, skills, email, isEnrolled}) => {
+    const item = array.map(({id, name, age, course, skills, email, isEnrolled}) => {
         reutnr`
         <tr id="${id}">
             <td>${id}</td>
@@ -31,3 +32,33 @@ getStudentsBtn.addEventListener("click", () => {
         createItemsMurckups(res)
     })
 })
+
+
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    const elements = event.currentTarget.elements
+
+
+    const studentData = {
+        name: elements.name.value,
+        age: Number(elements.age.value),
+        course: elements.course.value,
+        skills: elements.skills.value,
+        email: elements.email.value,
+        isEnrolled: elements.isElement.value,
+    }
+
+
+    addStudent(studentData).then(() => {
+        getStudents().then(res => {
+            form.reset()
+            createItemsMurckups(res)
+        })
+    })
+})
+
+
+
+
