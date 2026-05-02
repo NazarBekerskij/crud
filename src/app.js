@@ -1,28 +1,28 @@
 import { isElement } from "lodash";
 import { getStudents, addStudent, updateStudent, deleteStudent } from "./api/studentsApi";
 
-const listRef = document.querySelector("students-table tbody");
+const listRef = document.querySelector("#students-table tbody");
 const getStudentsBtn = document.querySelector("#get-students-btn")
-const form = document.querySelector("add-student-form");
+const form = document.querySelector("#add-student-form");
 
 
 function createItemsMurckups(array){
     const item = array.map(({id, name, age, course, skills, email, isEnrolled}) => {
-        reutnr`
+        return`
         <tr id="${id}">
             <td>${id}</td>
             <td>${name}</td>
             <td>${age}</td>
             <td>${course}</td>
-            <td>${skills.join(', ')}</td> <!-- Перетворюємо масив навичок у рядок -->
+            <td>${skills}</td> 
             <td>${email}</td>
-            <td>${isEnrolled ? "✅" : "❌"}</td>
+            <td>${isEnrolled}</td>
             <td>
                 <button type="button" data-action="update">Оновити</button>
                 <button type="button" data-action="delete" style="background-color: red;">Видалити</button>
             </td>
         </tr>`;
-    }).join()
+    }).join("")
     listRef.innerHTML = item
 }
 
