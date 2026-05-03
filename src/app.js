@@ -1,6 +1,9 @@
 import { isElement } from "lodash";
 import { getStudents, addStudent, updateStudent, deleteStudent } from "./api/studentsApi";
 
+
+
+let currentId = null
 const listRef = document.querySelector("#students-table tbody");
 const getStudentsBtn = document.querySelector("#get-students-btn")
 const form = document.querySelector("#add-student-form");
@@ -28,9 +31,7 @@ function createItemsMurckups(array){
 
 
 getStudentsBtn.addEventListener("click", () => {
-    getStudents().then((res) => {
-        createItemsMurckups(res)
-    })
+    getStudents().then(res => createItemsMurckups(res))
 })
 
 
@@ -47,18 +48,53 @@ form.addEventListener("submit", (event) => {
         course: elements.course.value,
         skills: elements.skills.value,
         email: elements.email.value,
-        isEnrolled: elements.isElement.value,
+        isEnrolled: elements.isEnrolled.checked,
     }
 
+    if(currentId === null){
+          addStudent(studentData).then(getStudents).then(res => createItemsMurckups(res))
+          return
+    }
 
-    addStudent(studentData).then(() => {
-        getStudents().then(res => {
-            form.reset()
-            createItemsMurckups(res)
-        })
-    })
+    updateStudent(currentId, studentData).then(getStudents).then(res => {
+    form.reset()
+    createItemsMurckups(res)
+    } )
 })
 
+// update
+// delete
 
+
+
+listRef.addEventListener("click", (event) => {
+    if(event.target.nodeName !== "BUTTON"){
+        return;
+    }
+
+    const action = event.target.dataset.action
+    const id = event.target.closest("tr").id
+    const tr = event.target.closest("tr")
+
+    
+    switch(action){
+        case "update": 
+        form.elements.name.value = tr.children[1].textContent;
+        form.elements.age.value = tr.children[2].textContent;
+        form.elements.course.value = tr.children[3].textContent;
+        form.elements.skills.value = tr.children[4].textContent;
+        form.elements.email.value = tr.children[5].textContent;
+        form.elements.isEnrolled.checked = tr.children[6];
+        currentId = id;
+  
+
+        break;
+        case "delete":
+        deleteStudent(id).then(getStudents).then(res => createItemsMurckups(res))
+        break;
+        default: return
+    }
+    
+})
 
 

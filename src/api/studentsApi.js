@@ -1,11 +1,11 @@
 import { method } from "lodash";
 
-const BASE_URL = 'http://localhost:3001/students';
+const BASE_URL = 'http://localhost:3000/students';
 
 
 
 export const getStudents = () => {
-    return fetch(BASE_URL).then(res => res.json())
+    return fetch(`${BASE_URL}`).then(res => res.json())
 }
 
 
