@@ -10,6 +10,8 @@ export const getStudents = () => {
 
 
 
+
+
 export const addStudent = (studentData) => {
     const options = {
         method: "POST",
@@ -36,12 +38,22 @@ export const updateStudent = (id, updatedData) => {
 
 
 
-export const deleteStudent = (id) => {
+
+
+
+// export const deleteStudent = (id) => {
+//     const options = {
+//         method: "DELETE",
+//     };
+//     return fetch(`${BASE_URL}/${id}`, options).then(res => res.json());
+// }
+
+
+
+export const deleteStudent = async(id) => {
     const options = {
         method: "DELETE",
     };
-    return fetch(`${BASE_URL}/${id}`, options).then(res => res.json());
+    const res = await fetch(`${BASE_URL}/${id}`, options)
+    return await res.json()
 }
-
-
-
