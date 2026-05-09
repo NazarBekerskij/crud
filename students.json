@@ -1,24 +1,6 @@
 {
   "students": [
     {
-      "name": "михайло",
-      "age": 40,
-      "course": "айті",
-      "skills": "не вмію готувати ",
-      "email": "bekerskijnazar9@gmail.com",
-      "isEnrolled": true,
-      "id": "BWhBv9k7ea8"
-    },
-    {
-      "name": "sdsa",
-      "age": 121212,
-      "course": "sadsad",
-      "skills": "sadsad",
-      "email": "bekerskijnazar9@gmail.com",
-      "isEnrolled": true,
-      "id": "mQDVh12s6S8"
-    },
-    {
       "name": "sd",
       "age": 1212,
       "course": "asd",

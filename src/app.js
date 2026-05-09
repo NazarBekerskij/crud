@@ -30,9 +30,7 @@ function createItemsMurckups(array){
 }
 
 
-getStudentsBtn.addEventListener("click", () => {
-    getStudents().then(res => createItemsMurckups(res))
-})
+getStudentsBtn.addEventListener("click", () => {getStudents().then(res => createItemsMurckups(res))})
 
 
 
