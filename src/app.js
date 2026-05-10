@@ -30,11 +30,16 @@ function createItemsMurckups(array){
 }
 
 
-getStudentsBtn.addEventListener("click", () => {getStudents().then(res => createItemsMurckups(res))})
+// getStudentsBtn.addEventListener("click", () => {getStudents().then(res => createItemsMurckups(res))})
+
+getStudentsBtn.addEventListener("click", async () => {
+    const res = await getStudents();
+    createItemsMurckups(res)
+})
 
 
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
     event.preventDefault()
 
     const elements = event.currentTarget.elements
@@ -50,14 +55,24 @@ form.addEventListener("submit", (event) => {
     }
 
     if(currentId === null){
-          addStudent(studentData).then(getStudents).then(res => createItemsMurckups(res))
-          return
+        //   addStudent(studentData).then(getStudents).then(res => createItemsMurckups(res))
+      await addStudent(studentData)
+      const res = await getStudents()
+      createItemsMurckups(res)
+      form.reset()
+      return
     }
 
-    updateStudent(currentId, studentData).then(getStudents).then(res => {
-    form.reset()
+    // updateStudent(currentId, studentData).then(getStudents).then(res => {
+    // form.reset()
+    // createItemsMurckups(res)
+    // } )
+
+
+    updateStudent(currentId, studentData)
+    const res = await getStudents()
     createItemsMurckups(res)
-    } )
+    form.reset()
 })
 
 // update
@@ -65,7 +80,7 @@ form.addEventListener("submit", (event) => {
 
 
 
-listRef.addEventListener("click", (event) => {
+listRef.addEventListener("click", async (event) => {
     if(event.target.nodeName !== "BUTTON"){
         return;
     }
@@ -88,7 +103,10 @@ listRef.addEventListener("click", (event) => {
 
         break;
         case "delete":
-        deleteStudent(id).then(getStudents).then(res => createItemsMurckups(res))
+        // deleteStudent(id).then(getStudents).then(res => createItemsMurckups(res))
+        deleteStudent(id)
+        const res = await getStudents()
+        createItemsMurckups(res)
         break;
         default: return
     }

@@ -19,13 +19,31 @@
       "id": "yeS3y9PdBHQ"
     },
     {
-      "name": "іван",
-      "age": 120,
-      "course": "айті",
+      "name": "Назарhhhhhh",
+      "age": 121212,
+      "course": "asd",
       "skills": "готувати вмію",
-      "email": "nazarbekerskij8@gmail.com",
-      "isEnrolled": false,
-      "id": "eInkyeEZjNc"
+      "email": "bekerskijnazar9@gmail.com",
+      "isEnrolled": true,
+      "id": "i6SuFbd2KNM"
+    },
+    {
+      "name": "yfdyfdy",
+      "age": 1111111,
+      "course": "fdfdsf",
+      "skills": "dsfsdfsdf",
+      "email": "nazar@gmail.com",
+      "isEnrolled": true,
+      "id": "IoBT7V7uZpc"
+    },
+    {
+      "name": "андрій",
+      "age": 11111,
+      "course": "вавіаві",
+      "skills": "віавіа",
+      "email": "asdfdsf@gmail.com",
+      "isEnrolled": true,
+      "id": "fRVxR9ufGNM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
